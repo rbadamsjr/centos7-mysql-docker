@@ -25,12 +25,10 @@ RUN yum localinstall mysql57-community-release-el6-8.noarch.rpm -y && \
     yum install python34 -y && \
     yum install java-1.8.0-openjdk-devel.x86_64 -y && \
     yum install expect -y && \
-    yum install java-1.8.0-openjdk -y && \
     yum update -y && \
     yum clean all && \
     rm -fr /var/cache/*
 
-ADD ./config/ /var/breakoutfinance/
 
 COPY secure-answers.sh /tmp
 RUN chmod 755 /tmp/secure-answers.sh
