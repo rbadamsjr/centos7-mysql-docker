@@ -13,3 +13,6 @@ and you will have to run the following command in mysql
 
 update user set password=PASSWORD("NEWPASSWORD") where User='root';
 flush privileges;
+
+# run mysql
+mysqld &
