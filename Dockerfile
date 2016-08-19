@@ -22,8 +22,6 @@ ADD mysql57-community-release-el6-8.noarch.rpm .
 RUN yum localinstall mysql57-community-release-el6-8.noarch.rpm -y && \
     yum install mysql-community-server -y && \
     yum install epel-release -y && \
-    yum install python34 -y && \
-    yum install java-1.8.0-openjdk-devel.x86_64 -y && \
     yum install expect -y && \
     yum update -y && \
     yum clean all && \
