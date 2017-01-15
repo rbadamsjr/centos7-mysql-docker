@@ -1,5 +1,5 @@
  
-centos:centos7
+FROM centos:centos7
 
 MAINTAINER Roland Adams <roland.adams@smartideasllc.net>
 
