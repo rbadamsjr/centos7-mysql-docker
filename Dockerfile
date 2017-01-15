@@ -1,5 +1,5 @@
  
-VOLFROM centos:centos7
+centos:centos7
 
 MAINTAINER Roland Adams <roland.adams@smartideasllc.net>
 
