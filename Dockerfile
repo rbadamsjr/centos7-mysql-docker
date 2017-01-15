@@ -18,6 +18,12 @@ ENV MYSQL_USER=root \
     IS_NEW_INSTANCE=true
 
 # needed to install mysql community
+RUN yum install -y wget && \
+    wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+
+ADD MySQL-5.7/mysql-community-libs-5.7.17-1.el7.i686.rpm .
+
+
 ADD mysql57-community-release-el6-8.noarch.rpm .
 
 RUN rpm --import http://dev.mysql.com/doc/refman/5.7/en/checking-gpg-signature.html
@@ -34,8 +40,10 @@ VOLUME ["/var/lib/mysql"]
 
 COPY secure-answers.sh /tmp
 RUN chmod 755 /tmp/secure-answers.sh
-RUN /usr/bin/mysql_install_db --datadir="/var/lib/mysql" --user=mysql
-RUN /usr/bin/mysqld --inintialize --datadir="/var/lib/mysql" --socket="/var/lib/mysql/mysql.sock" --user=mysql  >/dev/null 2>&1 &
+RUN /usr/sbin/mysqld --initialize --datadir="/var/lib/mysql" --user=mysql
+#RUN /usr/bin/mysqld --inintialize --datadir="/var/lib/mysql" --socket="/var/lib/mysql/mysql.sock" --user=mysql  >/dev/null 2>&1 &
+
+RUN passwd="`grep 'temporary.*root@localhost' /var/log/mysqld.log | sed 's/.*root@localhost: //'`"
 RUN /tmp/secure-answers.sh
 
 EXPOSE 3306
