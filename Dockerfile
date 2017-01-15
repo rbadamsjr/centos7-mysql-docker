@@ -1,4 +1,4 @@
-
+ 
 VOLFROM centos:centos7
 
 MAINTAINER Roland Adams <roland.adams@smartideasllc.net>
@@ -30,7 +30,7 @@ RUN yum localinstall mysql57-community-release-el6-8.noarch.rpm -y && \
     yum clean all && \
     rm -fr /var/cache/*
 
-VOLUME["/var/lib/mysql"]
+VOLUME ["/var/lib/mysql"]
 
 COPY secure-answers.sh /tmp
 RUN chmod 755 /tmp/secure-answers.sh
